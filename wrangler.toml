@@ -1,0 +1,18 @@
+name = "cf-uptimerobot-notifier"
+main = "src/index.ts"
+compatibility_date = "2026-04-04"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[triggers]
+crons = ["* * * * *"]
+
+[vars]
+UPTIMEROBOT_API_URL = "https://api.uptimerobot.com/v2/getMonitors"
+NOTIFY_ON_NON_UP_TRANSITIONS = "true"
+LOG_LEVEL = "info"
+
+[[kv_namespaces]]
+binding = "MONITOR_SNAPSHOT_KV"
+id = "142d77f25ab14433a09d73d3ad8142ec" 
+preview_id = "7b6bfcf9606f49aa9810c4994fb38a10"
