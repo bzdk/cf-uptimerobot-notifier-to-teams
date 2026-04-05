@@ -5,7 +5,7 @@ compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
 [triggers]
-crons = ["* * * * *"]
+crons = ["*/2 * * * *"]
 
 [vars]
 UPTIMEROBOT_API_URL = "https://api.uptimerobot.com/v2/getMonitors"

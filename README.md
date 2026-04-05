@@ -1,6 +1,6 @@
 # UptimeRobot Teams Worker
 
-Cloudflare Worker that polls UptimeRobot every minute, compares the latest monitor snapshot with the previous state stored in Workers KV, and sends incident and recovery notifications to a Microsoft Teams Incoming Webhook.
+Cloudflare Worker that polls UptimeRobot every 2 minutes, compares the latest monitor snapshot with the previous state stored in Workers KV, and sends incident and recovery notifications to a Microsoft Teams Incoming Webhook.
 
 ## Requirements
 
@@ -96,4 +96,4 @@ Deploy the Worker:
 npx wrangler deploy
 ```
 
-The cron schedule is defined in `wrangler.toml` as `* * * * *`, so Cloudflare will trigger the Worker every minute after deployment.
+The cron schedule is defined in `wrangler.toml` as `*/2 * * * *`, so Cloudflare will trigger the Worker every 2 minutes after deployment.

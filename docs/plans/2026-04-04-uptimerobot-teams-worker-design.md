@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build a Cloudflare Worker that runs every minute, fetches all monitor states from UptimeRobot via `getMonitors`, detects monitor status changes against the previous snapshot stored in Cloudflare KV, and posts incident and recovery notifications to a Microsoft Teams channel via Incoming Webhook.
+Build a Cloudflare Worker that runs every 2 minutes, fetches all monitor states from UptimeRobot via `getMonitors`, detects monitor status changes against the previous snapshot stored in Cloudflare KV, and posts incident and recovery notifications to a Microsoft Teams channel via Incoming Webhook.
 
 ## Scope
 
@@ -37,7 +37,7 @@ The project will be a single TypeScript Cloudflare Worker. The worker exposes tw
 
 Core flow:
 
-1. Cron trigger fires every minute.
+1. Cron trigger fires every 2 minutes.
 2. Worker calls UptimeRobot `getMonitors` and retrieves all monitors.
 3. Response data is normalized into an internal snapshot shape.
 4. Worker reads the previous snapshot from KV.
@@ -197,7 +197,7 @@ vitest.config.ts
 
 ## Open Decisions Resolved
 
-- Poll all monitors every minute: yes
+- Poll all monitors every 2 minutes: yes
 - Persist last-known state in Cloudflare KV: yes
 - Notify on both incident and recovery: yes
 - Send to Teams via Incoming Webhook: yes

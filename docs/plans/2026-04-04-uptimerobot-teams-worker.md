@@ -2,7 +2,7 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Build a TypeScript Cloudflare Worker that polls UptimeRobot every minute, detects monitor status changes using Cloudflare KV, and sends incident and recovery notifications to a Microsoft Teams Incoming Webhook.
+**Goal:** Build a TypeScript Cloudflare Worker that polls UptimeRobot every 2 minutes, detects monitor status changes using Cloudflare KV, and sends incident and recovery notifications to a Microsoft Teams Incoming Webhook.
 
 **Architecture:** The Worker uses a single `scheduled()` job for polling, a minimal `fetch()` handler for health and manual triggering, KV for the latest monitor snapshot plus short dedupe keys, and isolated adapters for UptimeRobot and Teams. The implementation is intentionally narrow so that change detection and notification behavior are easy to verify and later extend.
 
@@ -51,7 +51,7 @@ Create:
 - `vitest.config.ts` for Node-based unit tests
 - `src/index.ts` exporting placeholder `fetch` and `scheduled`
 - `src/types.ts` with placeholder Env and shared types
-- `wrangler.toml` with Worker name, main entry, compatibility date, and cron `* * * * *`
+- `wrangler.toml` with Worker name, main entry, compatibility date, and cron `*/2 * * * *`
 
 Minimal `src/index.ts`:
 
